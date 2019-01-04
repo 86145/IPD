@@ -6,8 +6,8 @@
 #     move: A function that returns 'c' or 'b'
 ####
 
-team_name = 'The name the team gives to itself' # Only 10 chars displayed.
-strategy_name = 'The name the team gives to this strategy'
+team_name = 'The Brains' # Only 10 chars displayed.
+strategy_name = 'One of the two'
 strategy_description = 'How does this strategy decide?'
     
 def move(my_history, their_history, my_score, their_score):
@@ -25,8 +25,19 @@ def move(my_history, their_history, my_score, their_score):
     
     # Analyze my_history and their_history and/or my_score and their_score.
     # Decide whether to return 'c' or 'b'.
+
+     # If the other player has betrayed or this is the last half of the game, 
+    if 'b' in their_history or len(their_history)>100: 
+        return 'b'               # Betray.
+    else:
+        return 'c'         # but 90% of the time collude
+
+   # if len(their_history) > 0 and their_history[len(their_history) - 1] == 'b':
+    #    return 'b'
+  #  elif my_score < their_score:
+      #  return 'b'
     
-    return 'c'
+   # return 'c'
 
     
 def test_move(my_history, their_history, my_score, their_score, result):
